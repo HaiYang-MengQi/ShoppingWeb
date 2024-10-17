@@ -1,0 +1,26 @@
+{
+  "name": "pinduoduo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vant/area-data": "^1.5.2",
+    "pinia": "^2.2.2",
+    "pinia-plugin-persistedstate": "^4.0.0",
+    "vant": "^4.9.4",
+    "vue": "^3.4.29",
+    "vue-router": "^4.4.3"
+  },
+  "devDependencies": {
+    "@vant/auto-import-resolver": "^1.2.1",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "unplugin-auto-import": "^0.18.2",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "^5.3.1"
+  }
+}
