@@ -1,31 +1,30 @@
 <script setup>
 import {onMounted, ref} from 'vue';
 import {useRoute, useRouter} from "vue-router";
-import {useAddressStore} from '@/stores/addresslist.js'
+import {useAddressStore} from '@/stores/address.js'
 import {areaList} from '@vant/area-data';
-
 const route = useRoute();
 const router = useRouter();
 const searchResult = ref([]);
-const store = useAddressStore();
-const address_id = ref(0)
-const address_data = ref({})
+const addressStore = useAddressStore();
+const addressID = ref(-1)
+const addressData = ref({})
 onMounted(() => {
-      address_id.value = Number(route.query.address_id)
-      const address = store.addressList.find(item => item.id === address_id.value);
+      addressID.value = Number(route.query.addressID)
+      const address = addressStore.availableList.find(item => item.id === addressID.value);
       if (address) {
-        address_data.value = address;
+        addressData.value = address;
       } else {
-        console.info('未找到匹配的 address 对象');
+        console.info('新增用户');
       }
-
     }
 )
 const onSave = (val) => {
-  store.updateAddressList(JSON.stringify(val))
+  addressStore.saveAddress(val)
+  router.back()
 };
 const onDelete = (val) => {
-  store.deleteAddressList(val.id)
+  addressStore.deleteAddressList(val.id)
   router.back()
 };
 const onChangeDetail = () => {
@@ -35,7 +34,7 @@ const onChangeDetail = () => {
 
 <template>
   <van-address-edit
-      :address-info="address_data"
+      :address-info="addressData"
       :area-columns-placeholder="['请选择', '请选择', '请选择']"
       :area-list="areaList"
       :search-result="searchResult"

@@ -3,7 +3,8 @@ import {ref} from 'vue'
 
 
 export const useAddressStore = defineStore('address', () => {
-    const addressList = ref( [
+    const defaultIndex = ref(1)
+    const availableList = ref( [
         {
             id: 1,
             name: '张三',
@@ -13,7 +14,7 @@ export const useAddressStore = defineStore('address', () => {
             county: '西湖区',
             areaCode: '330100',
             addressDetail: '文三路 138 号东方通信大厦 7 楼 501 室',
-            isDefault: true,
+            isDefault: false,
         },
         {
             id: 2,
@@ -40,29 +41,15 @@ export const useAddressStore = defineStore('address', () => {
             isDefault: false,
         },
     ])
-    const getAddressList = () => {
-
-    }
-
-    const getDisabledList = () => {
-
-    }
-    const updateAddressList = (val) => {
-        const parsedVal = JSON.parse(val);  // 解析传入的JSON字符串为对象
-        const index = addressList.value.findIndex(item => item.id === parsedVal.id);  // 找到对应的地址索引
-        if (index !== -1) {
-            addressList.value[index] = parsedVal;  // 更新地址列表中的数据
-            if (parsedVal.isDefault)
-                addressList.value.forEach(item => {
-                    if (item.id !== parsedVal.id) {
-                        item.isDefault = false;
-                    }
-                });
-        } else {
-            addressList.value.push({
-                id : addressList.value.length + 1,
-                ...parsedVal
-            });
+    const saveAddress = (val) => {
+        if (val.id === undefined){
+            console.log('增加')
+            val.id = availableList.value.length + 1
+            availableList.value.push(val)
+            console.log(val.isDefault,availableList.value[defaultIndex].isDefault,defaultIndex.value)
+            val.isDefault ? availableList.value[defaultIndex].isDefault = false : null
+        }else {
+            console.log('修改')
         }
     }
 
@@ -76,11 +63,10 @@ export const useAddressStore = defineStore('address', () => {
     }
 
     return {
-        addressList,
+        defaultIndex,
+        availableList,
         disabledList,
-        getAddressList,
-        getDisabledList,
-        updateAddressList,
+        saveAddress,
         deleteAddressList
     }
 })

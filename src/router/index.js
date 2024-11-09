@@ -9,25 +9,7 @@ const routes = [
             {
                 path: '/index',
                 name: 'index',
-                component: () => import('../view/IndexView.vue'),
-                redirect: '/index/suggest',
-                children: [
-                    {
-                        path: '/index/food',
-                        name: 'food',
-                        component: () => import('../view/404View.vue')
-                    },
-                    {
-                        path: '/index/suggest',
-                        name: 'suggest',
-                        component: () => import('../view/ProductView.vue')
-                    },
-                    {//todo 到时候会删除这个连接
-                        path: '/index/demo',
-                        name: 'demo',
-                        component: () => import('../view/Demo.vue')
-                    }
-                ]
+                component: () => import('../view/IndexView.vue')
             },
             {
                 path: '/video',
@@ -40,17 +22,27 @@ const routes = [
                 component: () => import('../view/ChatView.vue')
             },
             {
-                path: '/about',
-                name: 'about',
-                component: () => import('../view/AboutView.vue'),
+                path: '/user',
+                name: 'user',
+                component: () => import('../view/UserView.vue'),
                 children: [
                     {
-                        path: 'address_list',
-                        name: 'address_list',
+                        path: 'user_card',
+                        name: 'user_card',
+                        component: () => import('../view/UserCardView.vue')
+                    },
+                    {
+                        path: 'analysis/:title?',
+                        name: 'analysis',
+                        component: () => import('../view/ShopAnalysisView.vue'),
+                    },
+                    {
+                        path: 'addressList/:title?',
+                        name: 'addressList',
                         component: () => import('../view/AddressListView.vue')
                     },
                     {
-                        path: 'address_edit/:address_id?',
+                        path: 'address_edit/:addressID?',
                         name: 'address_edit',
                         component: () => import('../view/AddressEditView.vue')
                     },

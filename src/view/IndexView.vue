@@ -5,10 +5,13 @@ import tab from '@/components/TabCom.vue'
 
 <template>
   <van-sticky>
+    <!-- 搜索框-->
     <search/>
+    <!-- 标签导航条-->
     <tab/>
   </van-sticky>
-    <router-view/>
+  <!--    指定导航条内容-->
+  <router-view/>
 </template>
 
 <style scoped>

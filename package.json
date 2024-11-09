@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vant/area-data": "^1.5.2",
+    "echarts": "^5.5.1",
     "pinia": "^2.2.2",
     "pinia-plugin-persistedstate": "^4.0.0",
     "vant": "^4.9.4",

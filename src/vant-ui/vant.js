@@ -14,14 +14,14 @@ import {
     Dialog,
     DropdownMenu,
     DropdownItem,
+    Divider,
     TextEllipsis,
     Barrage,
     Cell,
     CellGroup,
     CouponCell,
     CouponList,
-    NavBar
-
+    NavBar,
 } from 'vant';
 const VantComponents = [
     ConfigProvider,
@@ -38,6 +38,7 @@ const VantComponents = [
     AddressEdit,
     Dialog,
     DropdownMenu,
+    Divider,
     DropdownItem,
     TextEllipsis,
     Barrage,
@@ -45,8 +46,6 @@ const VantComponents = [
     CellGroup,
     CouponCell,
     CouponList,
-    NavBar
-
-
+    NavBar,
 ];
 export default VantComponents;
