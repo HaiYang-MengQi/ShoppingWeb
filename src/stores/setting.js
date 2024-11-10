@@ -16,6 +16,7 @@ export const useSettingStore = defineStore('user', () => { // 使用具名导出
     const toggleTabbarHidden = () => {
         tabbarDisplay.value = false;
     };
+
     return {
         theme,
         themeName,

@@ -22,6 +22,9 @@ import {
     CouponCell,
     CouponList,
     NavBar,
+    Notify,
+    Popup,
+    FloatingBubble
 } from 'vant';
 const VantComponents = [
     ConfigProvider,
@@ -47,5 +50,8 @@ const VantComponents = [
     CouponCell,
     CouponList,
     NavBar,
+    Notify,
+    Popup,
+    FloatingBubble
 ];
 export default VantComponents;

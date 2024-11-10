@@ -4,12 +4,21 @@ const routes = [
     {
         path: '/',
         name: 'home',
+        redirect : '/index/suggest',
         component: () => import('../view/HomeView.vue'),
         children: [
             {
-                path: '/index',
+                path: 'index',
                 name: 'index',
-                component: () => import('../view/IndexView.vue')
+                redirect : '/index/suggest',
+                component: () => import('../view/IndexView.vue'),
+                children: [
+                    {
+                        path: 'suggest',
+                        name: 'suggest',
+                        component: () => import('../view/404View.vue')
+                    },
+                ]
             },
             {
                 path: '/video',
@@ -49,10 +58,16 @@ const routes = [
                 ]
             },
             {
+                path: '/complain/:title?'
+                , name: 'complain',
+                component: () => import('../view/ComplainView.vue')
+            },
+            {
                 path: '/:pathMatch(.*)*',
                 name: '404',
                 component: () => import('../view/404View.vue')
-            }
+            },
+
         ]
     }
 ];

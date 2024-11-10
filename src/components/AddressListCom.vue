@@ -4,7 +4,7 @@ import {useRouter} from 'vue-router';
 import {useAddressStore} from '@/stores/address.js'
 const router = useRouter();
 const address = useAddressStore();
-const activeId = address.defaultIndex
+const chosenAddressId = ref( address.defaultIndex)
 const availableList = ref([])
 const disabledList = ref([])
 onMounted(() => {
@@ -31,21 +31,28 @@ const onEdit = (item) => {
   router.push({
     name: 'address_edit',
     query: {
-      address_id: item.id
+      addressID: item.id
     }
   })
 
 };
 
 const onEditDisabled = (item) => {
-  console.log('点击不可到达的地址输出对象', item)
+  //todo 区分available 和 disabled就能解决，先不写了
+  console.log(item.id)
+  router.push({
+    name: 'address_edit',
+    query: {
+      addressID: item.id
+    }
+  })
 };
 
 </script>
 
 <template>
   <van-address-list
-      v-model="activeId"
+      v-model="chosenAddressId"
       :list="availableList"
       :disabled-list="disabledList"
       default-tag-text="默认"

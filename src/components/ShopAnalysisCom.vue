@@ -171,11 +171,6 @@ const pieChartCreated = () => {
   };
   pie.setOption(option);
 }
-// onMounted(() => {
-//   stripedChartCreated();
-//   polyLineChartCreated();
-//   pieChartCreated();
-// })
 onMounted(() => {
   nextTick(() => {
     stripedChartCreated();

@@ -11,7 +11,7 @@ const addressID = ref(-1)
 const addressData = ref({})
 onMounted(() => {
       addressID.value = Number(route.query.addressID)
-      const address = addressStore.availableList.find(item => item.id === addressID.value);
+      const address = addressStore.availableList[addressID.value-1]
       if (address) {
         addressData.value = address;
       } else {
@@ -19,12 +19,13 @@ onMounted(() => {
       }
     }
 )
-const onSave = (val) => {
+const onSave =  (val) => {
   addressStore.saveAddress(val)
   router.back()
+
 };
 const onDelete = (val) => {
-  addressStore.deleteAddressList(val.id)
+  addressStore.deleteAddress(val.id-1)
   router.back()
 };
 const onChangeDetail = () => {

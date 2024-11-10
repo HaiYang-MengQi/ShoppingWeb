@@ -1,9 +1,9 @@
 import {defineStore} from 'pinia'
 import {ref} from 'vue'
-
+import {useRouter} from "vue-router";
 
 export const useAddressStore = defineStore('address', () => {
-    const defaultIndex = ref(1)
+    const defaultIndex = ref(0)
     const availableList = ref( [
         {
             id: 1,
@@ -14,7 +14,7 @@ export const useAddressStore = defineStore('address', () => {
             county: '西湖区',
             areaCode: '330100',
             addressDetail: '文三路 138 号东方通信大厦 7 楼 501 室',
-            isDefault: false,
+            isDefault: true,
         },
         {
             id: 2,
@@ -43,20 +43,18 @@ export const useAddressStore = defineStore('address', () => {
     ])
     const saveAddress = (val) => {
         if (val.id === undefined){
-            console.log('增加')
             val.id = availableList.value.length + 1
             availableList.value.push(val)
-            console.log(val.isDefault,availableList.value[defaultIndex].isDefault,defaultIndex.value)
-            val.isDefault ? availableList.value[defaultIndex].isDefault = false : null
         }else {
-            console.log('修改')
+            availableList.value[val.id-1] = val
         }
+        val.isDefault ? availableList.value[defaultIndex.value].isDefault = false : null
+        defaultIndex.value = val.isDefault ? val.id -1 : defaultIndex.value
     }
 
-    const deleteAddressList = (id) => {
-        const index = addressList.value.findIndex(item => item.id === id);  // 找到对应的地址索引
+    const deleteAddress = (index) => {
         if (index !== -1) {
-            addressList.value.splice(index, 1);  // 删除地址列表中的数据
+            availableList.value.splice(index, 1);  // 删除地址列表中的数据
         } else {
             console.log('地址未找到');
         }
@@ -67,6 +65,6 @@ export const useAddressStore = defineStore('address', () => {
         availableList,
         disabledList,
         saveAddress,
-        deleteAddressList
+        deleteAddress
     }
 })
