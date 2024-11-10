@@ -36,7 +36,7 @@ const text = ref(`尊敬的各位朋友：
     <div class="title">404 Not Found</div>
     <van-image
         width="100%"
-        height="50%"
+        height="300px"
         fit="fill"
         :src='picture'
     />
