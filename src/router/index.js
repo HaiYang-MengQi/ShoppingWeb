@@ -16,7 +16,7 @@ const routes = [
                     {
                         path: 'suggest',
                         name: 'suggest',
-                        component: () => import('../view/404View.vue')
+                        component: () => import('../view/ProductListView.vue'),
                     },
                 ]
             },
@@ -33,34 +33,40 @@ const routes = [
             {
                 path: '/user',
                 name: 'user',
+                redirect: '/user/product',
                 component: () => import('../view/UserView.vue'),
                 children: [
                     {
-                        path: 'user_card',
-                        name: 'user_card',
-                        component: () => import('../view/UserCardView.vue')
-                    },
-                    {
-                        path: 'analysis/:title?',
-                        name: 'analysis',
-                        component: () => import('../view/ShopAnalysisView.vue'),
-                    },
-                    {
-                        path: 'addressList/:title?',
-                        name: 'addressList',
-                        component: () => import('../view/AddressListView.vue')
-                    },
-                    {
-                        path: 'address_edit/:addressID?',
-                        name: 'address_edit',
-                        component: () => import('../view/AddressEditView.vue')
-                    },
+                        path: 'product',
+                        name: 'product',
+                        component: () => import('../view/ProductListView.vue'),
+                    }
                 ]
             },
             {
                 path: '/complain/:title?'
                 , name: 'complain',
                 component: () => import('../view/ComplainView.vue')
+            },
+            {
+                path: '/order/:title?',
+                name: 'order',
+                component: () => import('../view/CourierLogisticsView.vue')
+            },
+            {
+                path: 'analysis/:title?',
+                name: 'analysis',
+                component: () => import('../view/ShopAnalysisView.vue'),
+            },
+            {
+                path: 'addressList/:title?',
+                name: 'addressList',
+                component: () => import('../view/AddressListView.vue')
+            },
+            {
+                path: 'address_edit/:addressID?',
+                name: 'address_edit',
+                component: () => import('../view/AddressEditView.vue')
             },
             {
                 path: '/:pathMatch(.*)*',

@@ -22,23 +22,7 @@ const onRefresh = () => {
   </van-sticky>
   <!--    指定导航条内容-->
   <van-pull-refresh v-model="loading" @refresh="onRefresh" success-text="刷新成功">
-<!--    <router-view/>-->
-    <van-row v-for="item in 500" :key="item" :gutter="[5,55]">
-      <van-col span="12" >
-        <van-image
-            width="100%"
-            height="100"
-            :src="img"
-        />
-      </van-col>
-      <van-col span="12">
-        <van-image
-            width="100%"
-            height="100"
-            :src="img"
-        />
-      </van-col>
-    </van-row>
+      <router-view/>
   </van-pull-refresh>
 
 </template>

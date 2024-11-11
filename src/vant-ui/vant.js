@@ -24,7 +24,10 @@ import {
     NavBar,
     Notify,
     Popup,
-    FloatingBubble
+    FloatingBubble,
+    Card,
+    Step,
+    Steps
 } from 'vant';
 const VantComponents = [
     ConfigProvider,
@@ -52,6 +55,9 @@ const VantComponents = [
     NavBar,
     Notify,
     Popup,
-    FloatingBubble
+    FloatingBubble,
+    Card,
+    Step,
+    Steps
 ];
 export default VantComponents;

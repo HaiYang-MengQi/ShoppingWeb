@@ -16,11 +16,13 @@ const displayMode = computed(() => settingStore.tabbarDisplay);
 
 <template>
   <van-config-provider :theme="theme">
-    <router-view/>
+      <router-view/>
     <float-bubble/>
     <!-- 下标导航条 -->
     <tabbar-com v-show="displayMode"/>
   </van-config-provider>
+
+
 </template>
 
 <style scoped>

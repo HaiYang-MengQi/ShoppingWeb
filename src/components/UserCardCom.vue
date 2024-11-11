@@ -30,10 +30,10 @@ const showPopup = () => {
   </van-cell>
   <van-cell title="账号与安全" icon="shield-o" is-link/>
   <van-cell :title="themeName"   @click="settingStore.toggleTheme"/>
-  <van-cell title="收件地址"  is-link to="/user/addressList/收件地址"/>
+  <van-cell title="收件地址"  is-link to="/addressList/收件地址"/>
     <Coupon/>
-  <van-cell title="购物分析"  is-link to="/user/analysis/购物分析"/>
-  <van-cell title="帮助与反馈"  is-link/>
+  <van-cell title="购物分析"  is-link to="/analysis/购物分析"/>
+  <van-cell title="快递物流"  is-link to="/order/快递物流"/>
   <van-cell title="软件说明" is-link @click="show = true" />
   <!-- 圆角弹窗（底部） -->
   <van-popup

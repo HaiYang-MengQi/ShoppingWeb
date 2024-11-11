@@ -1,0 +1,22 @@
+<script setup>
+import cardCom from '@/components/CardCom.vue'
+import setpCom from '@/components/StepCom.vue'
+import NavBarCom from "@/components/NavBarCom.vue";
+import {useRoute} from "vue-router";
+import {useSettingStore} from "@/stores/setting.js";
+import {ref} from "vue";
+const route = useRoute()
+const title = ref(route.params.title)
+const settingStore = useSettingStore()
+settingStore.toggleTabbarHidden();
+</script>
+
+<template>
+  <NavBarCom :title="title"/>
+  <card-com/>
+  <setp-com/>
+</template>
+
+<style scoped>
+
+</style>

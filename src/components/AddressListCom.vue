@@ -2,12 +2,15 @@
 import {onMounted, ref,computed} from 'vue';
 import {useRouter} from 'vue-router';
 import {useAddressStore} from '@/stores/address.js'
+import {useSettingStore} from '@/stores/setting.js'
 const router = useRouter();
 const address = useAddressStore();
 const chosenAddressId = ref( address.defaultIndex)
 const availableList = ref([])
 const disabledList = ref([])
 onMounted(() => {
+  const setting = useSettingStore();
+  setting.toggleTabbarHidden()
   availableList.value = address.availableList.map(item => {
     return {
       ...item,
